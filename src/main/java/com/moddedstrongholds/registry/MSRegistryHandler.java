@@ -5,6 +5,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import com.moddedstrongholds.ModdedStrongholds;
 import com.moddedstrongholds.block.MSBlocks;
+import com.moddedstrongholds.world.gen.feature.structure.MSStructure;
 
 import net.minecraft.item.BlockItem;
 import net.minecraft.item.Item;
@@ -43,6 +44,7 @@ public class MSRegistryHandler {
 	public static void registerDeferred(IEventBus iEventBus) {
 		
 		MSBlocks.BLOCKS.register(iEventBus);
+		MSStructure.STRUCTURE_FEATURES.register(iEventBus);
 		
 	}
 	

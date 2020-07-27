@@ -6,6 +6,7 @@ import net.minecraft.util.math.BlockPos;
 import net.minecraft.util.math.MutableBoundingBox;
 import net.minecraft.world.biome.Biome;
 import net.minecraft.world.gen.ChunkGenerator;
+import net.minecraft.world.gen.GenerationStage;
 import net.minecraft.world.gen.feature.NoFeatureConfig;
 import net.minecraft.world.gen.feature.structure.Structure;
 import net.minecraft.world.gen.feature.structure.StructureStart;
@@ -16,6 +17,18 @@ public class ModdedStrongholdStructure extends Structure<NoFeatureConfig> {
 	public ModdedStrongholdStructure(Codec<NoFeatureConfig> p_i51491_1_) {
 		super(p_i51491_1_);
 		
+	}
+	
+	public String getName() {
+		
+		return "stronghold";
+		
+	}
+	
+	public GenerationStage.Decoration func_236396_f_() {
+		
+		return GenerationStage.Decoration.STRONGHOLDS;
+				
 	}
 	
 	public IStartFactory<NoFeatureConfig> getStartFactory() {

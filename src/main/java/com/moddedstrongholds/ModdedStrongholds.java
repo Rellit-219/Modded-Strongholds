@@ -2,10 +2,19 @@ package com.moddedstrongholds;
 
 import com.moddedstrongholds.block.MSBlocks;
 import com.moddedstrongholds.registry.MSRegistryHandler;
+import com.moddedstrongholds.world.gen.feature.structure.MSStructure;
 
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.client.renderer.RenderTypeLookup;
 import net.minecraft.world.biome.Biome;
+import net.minecraft.world.gen.GenerationStage;
+import net.minecraft.world.gen.feature.DecoratedFeatureConfig;
+import net.minecraft.world.gen.feature.IFeatureConfig;
+import net.minecraft.world.gen.feature.NoFeatureConfig;
+import net.minecraft.world.gen.feature.StructureFeature;
+import net.minecraft.world.gen.feature.structure.Structure;
+import net.minecraft.world.gen.placement.IPlacementConfig;
+import net.minecraft.world.gen.placement.Placement;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
@@ -31,6 +40,8 @@ public class ModdedStrongholds {
 		
 		MinecraftForge.EVENT_BUS.register(this);
 		
+		
+		
 	}
 	
 	private void setup(final FMLCommonSetupEvent event) {
@@ -41,14 +52,13 @@ public class ModdedStrongholds {
             
         //});
 		
+		StructureFeature<NoFeatureConfig, ? extends Structure<NoFeatureConfig>> MODDED_STRONGHOLD = MSStructure.MODDED_STRONGHOLD.get().func_236391_a_(NoFeatureConfig.field_236559_b_);
+		
 		for (Biome biome : ForgeRegistries.BIOMES) {
 			
-			if (biome.getCategory() == Biome.Category.NETHER) {
-				
-				//biome.addFeature(GenerationStage.Decoration.UNDERGROUND_DECORATION, Feature.ORE.withConfiguration(new OreFeatureConfig(OreFeatureConfig.FillerBlockType.NETHERRACK, MEBlocks.RUBY_ORE.get().getDefaultState(), 3)).withPlacement(Placement.COUNT_RANGE.configure(new CountRangeConfig(16, 10, 20, 128))));
-				
-			}
-		
+			biome.features.get(GenerationStage.Decoration.STRONGHOLDS).remove(Structure.field_236375_k_);
+			biome.func_235063_a_(MODDED_STRONGHOLD);
+			
 		}
 		
 	}
